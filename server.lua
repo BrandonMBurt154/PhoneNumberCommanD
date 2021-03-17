@@ -1,7 +1,6 @@
+
 ESX = nil
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-
-local wait = false
 
 ESX.RegisterServerCallback('info', function(source, cb, target)
         local xPlayer = ESX.GetPlayerFromId(target)
@@ -12,18 +11,20 @@ ESX.RegisterServerCallback('info', function(source, cb, target)
         local firstname     = user['firstname']
         local lastname      = user['lastname']
         local phone			= user['phone_number']
-        local playerpos = GetEntityCoords(PlayerPedId())
-            
+
         local data = {
             firstname = firstname,
             lastname = lastname,
             phone = phone,
-            playerpos = playerpos
         }
     cb(data)
 end)  
 
+
 RegisterCommand('pnum', function(source, args) -- Registers the command
+    
+    local wait = false
+    
     if wait == false then
     TriggerClientEvent("chat:phonenum", -1, source, GetPlayerName(source), table.concat(args, " "))
     wait = true
