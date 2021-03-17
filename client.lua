@@ -23,12 +23,9 @@ ESX.TriggerServerCallback('info', function(data)
     else                             
         phone = 'Unknow'             
     end     
-    if data.playerpos ~= nil then        
-        phone = data.playerpos           
-    else                             
-        playerpos = 'Unknow'             
-    end       
-                           
+    
+    phone = data.playerpos           
+               
 end)
 
 RegisterNetEvent('chat:phonenum')
