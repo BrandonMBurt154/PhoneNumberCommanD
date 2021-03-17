@@ -1,7 +1,9 @@
 
 ESX = nil
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-    
+
+local wait = false
+
 ESX.RegisterServerCallback('info', function(source, cb, target)
         local xPlayer = ESX.GetPlayerFromId(target)
         local identifier = GetPlayerIdentifiers(target)[1]
@@ -18,10 +20,15 @@ ESX.RegisterServerCallback('info', function(source, cb, target)
             phone = phone,
         }
     cb(data)
-end) 
-    
-TriggerEvent('es:addCommand', 'p#', function(source, args, user)
-    table.remove(args, 1)
-    local source = tonumber(source)
+end)  
+
+RegisterCommand('pnum', function(source, args) -- Registers the command
+    if wait == false then
     TriggerClientEvent("chat:phonenum", -1, source, GetPlayerName(source), table.concat(args, " "))
+    wait = true
+    Citizen.wait(20000)
+    wait = false
+    elseif wait == true then
+    TriggerClientEvent("chat:phonewait", -1, source, GetPlayerName(source), table.concat(args, " "))
+    end
 end)
