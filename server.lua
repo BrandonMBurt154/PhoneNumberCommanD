@@ -1,4 +1,3 @@
-
 ESX = nil
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
@@ -29,7 +28,7 @@ RegisterCommand('pnum', function(source, args) -- Registers the command
     if wait == false then
     TriggerClientEvent("chat:phonenum", -1, source, GetPlayerName(source), table.concat(args, " "))
     wait = true
-    Citizen.wait(20000)
+    Citizen.Wait(20000)
     wait = false
     elseif wait == true then
     TriggerClientEvent("chat:phonewait", -1, source, GetPlayerName(source), table.concat(args, " "))

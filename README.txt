@@ -5,4 +5,5 @@ A Simple command to locally display name and phone number in chat designed using
 Place in your resource folder and ensure PhoneNumberCommand in your server.cfg
 
 Todo: 
-2) Make the script fucking work cause fuck LUA
+1) Fix the Error with TriggerServerCallback 
+2) Continue testing 
