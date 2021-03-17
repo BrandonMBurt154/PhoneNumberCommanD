@@ -7,6 +7,7 @@ ESX.TriggerServerCallback('info', function(data)
     local lastname = nil
     local phone = nil
     local playpos = nil
+    
     if data.firstname ~= nil then
         firstname = data.firstname
     else
@@ -26,7 +27,8 @@ ESX.TriggerServerCallback('info', function(data)
         phone = data.playerpos           
     else                             
         playerpos = 'Unknow'             
-    end                              
+    end       
+                           
 end)
 
 RegisterNetEvent('chat:phonenum')
