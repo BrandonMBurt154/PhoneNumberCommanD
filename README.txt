@@ -1,4 +1,4 @@
-***WIP*** Still does not work 
+***WIP*** Still does not work (im still learning so go easy on me I know it should be simple)
 
 A Simple command to locally display name and phone number in chat designed using essentialmode 
 
