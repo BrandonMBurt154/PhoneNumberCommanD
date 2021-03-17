@@ -6,7 +6,7 @@ ESX.TriggerServerCallback('info', function(data)
     local firstname = nil
     local lastname = nil
     local phone = nil
-    local playpos = nil
+    local playerpos = nil
     
     if data.firstname ~= nil then
         firstname = data.firstname
@@ -24,7 +24,7 @@ ESX.TriggerServerCallback('info', function(data)
         phone = 'Unknow'             
     end     
     
-    phone = data.playerpos           
+    playerpos = data.playerpos           
                
 end)
 
