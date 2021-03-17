@@ -6,6 +6,7 @@ ESX.TriggerServerCallback('info', function(data)
     local firstname = nil
     local lastname = nil
     local phone = nil
+    local playpos = nil
     if data.firstname ~= nil then
         firstname = data.firstname
     else
@@ -20,6 +21,11 @@ ESX.TriggerServerCallback('info', function(data)
         phone = data.phone           
     else                             
         phone = 'Unknow'             
+    end     
+    if data.playerpos ~= nil then        
+        phone = data.playerpos           
+    else                             
+        playerpos = 'Unknow'             
     end                              
 end)
 
@@ -29,7 +35,12 @@ AddEventHandler('chat:phonenum', function(id, name, message)
     local otherID = GetPlayerFromServerId(id) 
     if otherID == myId then -- checks to see if player is in range of own messages idk why broke if it wasnt there
         TriggerEvent('chatMessage', "", {255, 0, 0}, firstname.." "..lastname.. "| "..phone) -- Outputs message to sending client 
-    elseif GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(myId)), GetEntityCoords(GetPlayerPed(otherID)), true) < 19.999 then -- checks for players within range
+    elseif GetDistanceBetweenCoords(playerpos(myId)), playerpos(otherID)), true) < 19.999 then -- checks for players within range
         TriggerEvent('chatMessage', "", {0, 128, 255}, firstname.." "..lastname.. "| "..phone) -- Outputs message to players near sending client
     end
+end)
+
+RegisterNetEvent('chat:phonewait')
+AddEventHandler('chat:phonewait', function(id, name, message)
+    TriggerEvent('chatMessage', "", {255, 0, 0}, "Don't spam that command!")
 end)
